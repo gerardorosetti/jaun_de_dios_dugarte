@@ -1,5 +1,3 @@
-MENU INICIO
-
 PRIMER AÑO DE MEDICINA. UNIVERSIDAD DE LOS ANDES. DEPARTAMENTO DE EMBRIOLOGÍA.
 
 TEMARIO: 
@@ -9,7 +7,6 @@ TEMA 1 y TEMA 2. Apuntes. Preguntas desde la 46 hasta 53.
 TEMA 1 y TEMA 2. Según Guía de embriología D-MAN. Preguntas desde la 54 hasta la 
 
 MENU FIN
-
 1. Pregunta: Concepto de embriología:
 1. Pista: e e l c q e e o y d d l i, d e ó h e n.
 1. Respuesta: embriología es la ciencia que estudia el origen y desarrollo de los individuos, desde el óvulo hasta el nacimiento.

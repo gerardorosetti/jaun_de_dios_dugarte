@@ -1,0 +1,343 @@
+MENU INICIO
+
+PRIMER AÑO DE MEDICINA. UNIVERSIDAD DE LOS ANDES. DEPARTAMENTO DE EMBRIOLOGÍA.
+
+TEMARIO: 
+TEMA 1. Importancia de la embriología. Diapositivas suministradas por el departamento de embriología de la Universidad de los Andes. Preguntas desde la 1 hasta la 19.
+TEMA 2. Aparato Genital Masculino. Diapositivas suministradas por el departamento de embriología de la Universidad de los Andes. Preguntas desde la 20 hasta la 46.
+TEMA 1 y TEMA 2. Apuntes. Preguntas desde la 46 hasta 53.
+TEMA 1 y TEMA 2. Según Guía de embriología D-MAN. Preguntas desde la 54 hasta la 
+
+MENU FIN
+
+1. Pregunta: Concepto de embriología:
+1. Pista: e e l c q e e o y d d l i, d e ó h e n.
+1. Respuesta: embriología es la ciencia que estudia el origen y desarrollo de los individuos, desde el óvulo hasta el nacimiento.
+
+2. Pregunta: Importancia de la embriología:
+2. Respuesta:
+	a.- Proporciona lo conocimientos del desarrollo celular.
+	b.- Explica la posición y relaciones de estructuras anatómicas en el adulto.
+	c.- Explica las alteraciones del desarrollo normal y su mecanismo de formación.
+	d.- Estudia el desarrollo de la placenta y de las membranas. Relación madre - feto.
+	e.- Permite comprender el origen de algunas patologías.
+	f.- Permite comprender la estructura de los gametos y de los cromosomas humanos.
+
+
+3. Pregunta: Relaciones de la embriología:
+3. Respuesta:
+	a.- Pediatría.
+	b.- Cirugía.
+	c.- Obstetricia.
+	d.- Genética.
+	e.- Teratología.
+	f.- Reproducción humana.
+	g.- Oftalmología.
+	h.- Cirugía pediátrica.
+	i.- Neurología y Neurocirugía.
+	j.- Endocrinología.
+	k.- Patología.
+	I.- Traumatología.
+
+4. Pregunta: Áreas de la embriología:
+4. Pista: e d, e e, f d d.
+4. Respuesta: embriología descriptiva, embriología experimental, fisiología del desarrollo.
+
+5. Pregunta: Embriología descriptiva. Concepto:
+5. Pista: e d l f, e y r.
+5. Respuesta: estudio de la forma, estructura y relaciones.
+
+6. Pregunta: Embriología experimental: 
+6. Pista: e d l m c d d.
+6. Respuesta: estudio de los mecanismos causales del desarrollo.
+
+7. Pregunta: Fisiología del desarrollo:
+7. Pista: e l f d f d s d.
+7. Respuesta: estudia las funciones del feto durante su desarrollo.
+
+8. Pregunta: Etapas del desarrollo humano.
+8. Pista: e d h s d e d g e: e p y e p.
+8. Respuesta: el desarrollo humano se divide en dos grandes etapas: etapa prenatal y etapa postnatal.
+
+9. Pregunta: Etapa prenatal. Concepto:
+9. Pista: e e p d d q s e d l f h e n. 
+9. Respuesta: es el periodo del desarrollo que se extiende desde la fecundación hasta el nacimiento. 
+
+10. Pregunta: Periodos de la etapa prenatal:
+10. Pista: 
+10. Respuesta: Pre-embrionario, Embrionario, Fetal.
+
+11. Pregunta: Periodo pre-embrionario. Concepto:
+11 Pista: a d l p a l t s d d.
+11. Respuesta: abarca desde la primera a la tercera semana del desarrollo.
+
+12. Pregunta: Procesos del periodo pre-embrionario:
+12. Pista:
+12. Respuesta: Fecundación, Segmentación, Blastogénesis, Disco germinativo bilaminar, Disco germinativo trilaminar.
+
+13. Pregunta: Periodo embrionario. Concepto:
+13. Pista: a d l c a l o s d d. 
+13. Respuesta: abarca desde la cuarta a la octava semana del desarrollo.
+
+14. Pregunta: Procesos del periodo embrionario:
+14. Pista:
+14. Respuesta: Organogénesis, Morfogénesis, Histogénesis.
+
+15. Pregunta: Periodo fetal. Concepto: 
+15. Pista: s i a l n s d d y t c e n.
+15. Respuesta: se inicia a la novena semana del desarrollo y termina con el nacimiento.
+
+16. Pregunta: Procesos del periodo fetal:
+16. Pista:
+16. Respuesta: Histogénesis, Crecimiento corporal, Integración.
+
+17. Pregunta: Etapa postnatal. Concepto:
+17. Pista: e e p d d q s e d e n h l s.
+17. Respuesta: es el periodo del desarrollo que se extiende desde el nacimiento hasta la senectud.
+
+18. Pregunta: Periodos de la etapa postnatal:
+18. Pista:
+18. Respuesta:
+	.- Neonatal.
+	.- Lactancia.
+	.- Infancia.
+	.- Pubertad.
+	.- Adolescencia.
+	.- Adultez.
+	.- Senectud.
+
+19. Pregunta: Alteraciones de las etapas del desarrollo:
+19. Pista:
+19. Respuesta: Gametopatías, Blastopatías, Embriopatías, Fetopatías, Placopatías.
+
+20. Pregunta: Constitución del aparato genital masculino:
+20. Pista:
+20. Respuesta:
+	a.- Gonadas: Testículos.
+	b.- Vías seminales.
+	c.- Genitales externos.
+	d.- Glándulas anexas. 
+
+21. Pregunta: Gónadas o testículos. Características macroscópicas:
+21. Pista: Número, forma, longitud, ubicación y función.
+21. Respuesta:
+	a.- Órganos pares.
+	b.- Ovoides.
+	c.- Longitud: 4,5 cm.
+	d.- Ubicación: extracorpórea (escroto).
+	e.- Función Citocrina y Endocrina.
+
+22. Pregunta: Gónadas o testículos. Características microscópicas:
+22. Pista: son tres.
+22. Respuesta:
+	a.- Túnica albugínea.
+	b.- Tabiques testiculares.
+	c.- Túbulos seminíferos.
+
+23. Pregunta: Características microscópicas del túbulo seminífero:
+23. Pista:
+23. Respuesta:
+	a.- Membrana basal.
+	b.- Epitelio germinal:
+		.- Células sexuales.
+		.- Células de sostén o de Sertoli. 
+	c.- Células intersticiales o de Leydig. 
+
+24. Pregunta: Vías seminales. Las podemos dividir en:
+24. Pista:
+24. Respuesta: 1. Vías intratesticulares. 2. Vías extratesticulares.
+
+25. Pregunta: Vías seminales intratesticulares. Estas son:
+25. Pista:
+25. Respuesta: Túbulos seminíferos, Tubos rectos, Rete testis.
+
+26. Pregunta: Vías seminales extratesticulares: 
+26. Pista:
+26. Respuesta: Conductillos eferentes, Conducto epididimario, Conducto deferente, Conducto eyaculador, Uretra. 
+
+27. Pregunta: Genitales externos. Están formados por:
+27. Pista:
+27. Respuesta: Pene, Escroto.
+
+28. Pregunta: En los genitales masculinos externos el pene está formado por:
+28. Pista:
+28. Respuesta: 2 cuerpos cavernosos, 1 cuerpo esponjoso, glande, prepucio.
+
+29. Pregunta: En los genitales masculinos externos el escroto está formado por: 
+29. Pista:
+29. Respuesta: Piel, Dartos, Cremaster, Túnica vaginal, Túnica albugínea. 
+
+30. Pregunta: Glándulas anexas del aparato genital masculino:
+30. Pista:
+30. Respuesta:
+	.- Vesículas seminales.
+	.- Próstata.
+	.- Glándulas bulbouretrales o de Cowper.
+	.- Glándulas parauretrales o de Littré.
+
+31. Pregunta: Aparato genital masculino. Vesículas seminales:
+31. Pista: Describir las características de las vesículas seminales.
+31. Respuesta:
+	.- Divertículos del conducto deferente.
+	.- Forma de saco plegado de 5 a 20 cm.
+	.- Produce secreción viscosa alcalina.
+	.- Estimula motilidad espermática.
+	.- Protección coloidal.
+
+32. Pregunta: Aparato genital masculino. Próstata:
+32. Pista: Describir las características de la Próstata.
+32. Respuesta:
+	.- Situada por debajo de la vejiga.
+	.- Diámetro aproximado de 4 cm.
+	.- Formada por de 30 a 50 tubos alveolares. 
+	.- Produce líquido lechoso, alcalino.
+	.- Contiene enzimas (fosfatasa ácida).
+
+33. Pregunta: Aparato genital masculino. Glándulas bulbouretrales o de Cowper:
+33. Pista: Describir las características de las Glándulas bulbouretrales o de Cowper.
+33. Respuesta:
+	.- Situadas por detrás de la uretra membranosa.
+	.- Parénquima dividido en lobulillos.
+	.- Produce líquido ligeramente alcalino que lubrica la uretra.
+	.- Neutraliza el pH ácido de la uretra.
+
+34. Pregunta: Aparato genital masculino. Glándulas parauretrales o de Littré: 
+34. Pista: Describir las características de las Glándulas parauretrales o de Littré.
+34. Respuesta:
+	.- Situadas en el cuerpo esponjoso del pene.
+	.- Produce un líquido, cristalino que lubrica la uretra. 
+
+35. Pregunta: Espermatogénesis. Concepto:
+35. Pista: e e d d l c s m a t d u s d f p l c l c g p (e) s t e e.
+35. Respuesta: es el desarrollo de las células sexuales masculinas a través de una serie de fenómenos por los cuales las células germinativas primitivas (espermatogonias) se transforman en espermatozoides.
+
+36. Pregunta: Fases de la espermatogénesis:
+36. Pista:
+36. Respuesta: Multiplicación, Crecimiento, Maduración, Transformación o espermiogénesis.
+
+37. Pregunta: Espermatogénesis. Fase de multiplicación. Concepto:
+37. Pista: e l t s h l c p d l g m, l c g. E c, c l a l p, s c a d p m y d l a l e.
+37. Respuesta: en los testículos se hallan las células precursoras de los gametos masculinos, llamadas células germinales. Estas células, cuando llegan a la pubertad, se comienzan a dividir por mitosis y dan lugar a las espermatogonias.
+
+38. Pregunta: Espermatogénesis. Fase de crecimiento. Concepto:
+38. Pista: L e c y d l a e d p o.
+38. Respuesta: Las espermatogonias crecen y dan lugar a espermatocitos de primer orden.
+
+39. Pregunta: Espermatogénesis. Fase de maduración. Concepto:
+39. Pista: l e d p o s l p d m (r) y p d e d s o, q t 23 c c d c. E s l s m (e) y p c e, q p 23 c c u s c.
+39. Respuesta: los espermatocitos de primer orden sufren la primera división meiótica (reduccional) y producen dos espermatocitos de segundo orden, que tienen 23 cromosomas con dos cromátidas. Estos sufren la segunda meiosis (ecuacional) y producen cuatro espermátidas, que poseen 23 cromosomas con una sola cromátida.
+
+40. Pregunta: Espermatogénesis. Fase de transformación o espermiogénesis. Concepto:
+40. Pista: l e d l a e m u p d d c.
+40. Respuesta: las espermátidas dan lugar a espermatozoides mediante un proceso de diferenciación celular.
+
+41. Pregunta: Control hormonal:
+41. Pista: Mencionar las principales hormonas.
+41. Respuesta:
+	.- Gonadotrofinas hipofisiarias (GnRH).
+	.- Testosterona.
+	.- Prolactina.
+	.- Inhibina.
+
+42. Pregunta: Aparato genital masculino. Factores modificantes:
+42. Pista:
+42. Respuesta:
+	.- Temperatura.
+	.- Drogas.
+	.- Alcohol y tabaquismo.
+	.- Edad y alteraciones hormonales.
+	.- Traumatismo y varicocele.
+	.- Estrés.
+	.- Contaminación ambiental.
+
+43. Pregunta: Líquido seminal o semen. Concepto:
+43. Pista: m d l e c l s p d l d g a d a g m.
+43. Respuesta: mezcla de los espermatozoides con la secreción proveniente de las diferentes glándulas anexas del aparato genital masculino.
+
+44. Pregunta: Líquido seminal o semen. Características:
+44. Pista: Cantidad, N.º de espermatozoides, Olor, Color, pH, Consistencia, Morfología espermática, Motilidad espermática, Composición química.
+44. Respuesta:
+		.- Cantidad: 2 a 5ml por eyaculado. 
+		.- N.º de espermatozoides: 20 a 150 mil.
+		.- Olor: sui generis.
+		.- Color: blanco opalescente. 
+		.- pH: 7,2 a 8.
+		.- Consistencia: Coagulado y se licua en 15 a 30 minutos-
+		.- Morfología espermática: mayor al 30%.
+		.- Motilidad espermática: mayor al 50%.
+		.- Composición química: agua, ácido cítrico, fructosa, fosfatasa ácida, fibrolisina, prostaglandinas, electrolitos y diversas proteínas (albúmina).
+
+45. Pregunta: Líquido seminal o semen. Anomalías del volumen:
+45. Pista:
+45. Respuesta:
+		.- Aspermia: ausencia del líquido seminal. 
+		.- Oligo o Hipoespermia: eyaculado menor a 2 ml.
+		.- Poli o Hiperespermia: eyaculado mayor a 6 ml.
+
+
+46. Pregunta: Líquido seminal o semen. Anomalías espermáticas:
+46. Pista: A, O, P, A, T, N.
+46. Respuesta:
+		.- Azoospermia: ausencia de espermatozoides.
+		.- Oligozoospermia: espermatozoides menor a 20 millones x ml.
+		.- Polizoospermia: espermatozoides mayor a 150 millones x ml.
+		.- Astenozoospermia: motilidad disminuida.
+		.- Teratozoospermia: espermatozoides mal formados (40 a 50%).
+		.- Necrozoospermia: espermatozoides muertos.
+
+47. Pregunta: Las células de Sertoli empiezan a actuar por estímulo de...
+47. Pista: Complete.
+47. Respuesta: la FSH.
+
+48. Pregunta: La LH estimula a las células de 1__________ para que produzcan 2.__________.
+48. Pista: complete.
+48. Respuesta: 1. Leiding. 2. Testosterona. 
+
+49. Pregunta: Las células de Sertoli producen...
+49. Pista: complete.
+49. Respuesta: Inhibina.
+
+50. Pregunta: Aparato genital masculino. Control Hormonal. Concepto de la GnRH:
+50. Pista: diga: diga su nombre, de dónde vienen, a dónde llegan, y a quién estimula a producir qué.
+50. Respuesta: Gonadotropinas hipofisiarias vienen del hipotálamo y llegan a la adenohipófisis estimulándola a producir LH y FSH.
+
+51. Pregunta: Aparato genital masculino. Control Hormonal. Concepto de LH:
+51. Pista: diga su nombre, a dónde se dirige y qué produce.
+51. Respuesta: Hormona Leutinizante se dirigirá a las células de Leyding para que produzcan testosterona. 
+
+52. Pregunta: Aparato genital masculino. Control Hormonal. Concepto de FSH:
+52. Pista: diga su nombre, a dónde se dirige, y qué estimula en el aparato genital masculino.
+52. Respuesta: Hormona folículo estimulante se dirigirá a las células de Sertoli, que junto a la testosterona las estimula a formar espermatozoides a través del proceso de espermatogénesis. 
+
+53. Pregunta: Aparato genital masculino. Control Hormonal. Concepto de Inhibina:
+53. Pista: quién la produce, cuándo se produce, a dónde se dirige y con qué fin.
+53. Respuesta: Producida por las células de Sertoli una vez acabado el proceso de espermatogénesis, se dirigirá al hipotálamo para que se detenga la producción de GnRH.
+
+54. Pregunta: Señalar las características de la fecundación:
+54. Pista:
+54. Respuesta:
+	a.- Estimula la finalización de la segunda división meiótica en el ovocito penetrado por el espermatozoide.
+	b.- Establece el número normal diploide de cromosomas (46 en el cigoto).
+	c.- Genera variación en la especie humana a través de la mezcla de cromosomas maternos y paternos.
+	d.- Determina el sexo cromosómico del embrión.
+	e.- Produce la activación metabólica de la ovótida e inicia la segmentación del cigoto.
+
+55. Pregunta: Procesos que comprende el periodo pre-embrionario. Concepto de Segmentación:
+55. Pista: e l s d c e b (c m p), s c e c p p l t u h e ú, e l f d 12 a 16 c, e s h e d s d m.
+55. Respuesta: es la segmentación del cigoto en blastómeras (células más pequeñas), sucede cuando el cigoto pasa por la trompa uterina hacia el útero, en la fase de 12 a 16 células, el ser humano en desarrollo se denomina mórula.
+
+56. Pregunta: Procesos que comprende el periodo pre-embrionario. Concepto de Blastogénesis:
+56. Pista: e e p q v d l p d c h e f d l g, d e d 1 a 28. I i d b m e l p d ú y e d l c m-f.
+56. Respuesta: es el proceso que va desde la primera división celular hasta el final de la gastrulación, desde el día 1 al 28. Incluye implantación del blastocisto maduro en la pared del útero y establecimiento de la circulación materno-fetal.
+
+57. Pregunta: Procesos que comprende el periodo pre-embrionario. Concepto de Disco Germinativo Bilaminar:
+57. Pista: s p l d l i c a i e b, s d d c d e e e y e h a p d l m c i, e c e d e b.
+57. Respuesta: se produce luego de la implantación cuando al implantarse el blastocisto, se diferencian dos capas de embriones el epiblasto y el hipoblasto a partir de la masa celular interna, ellas constituyen el disco embrionario bilaminar.
+
+58. Pregunta: Procesos que comprende el periodo pre-embrionario. Concepto de Disco Germinativo Trilaminar: 
+58. Pista: E p d f d c g, l g e e i d l e, d e c s p c i c e d d e b q s c e d e t c d t c g, l e, m y e, a t e d e e c o l t y ó d e.
+58. Respuesta: El proceso de formación de capas germinales, llamado gastrulación es el inicio de la embriogénesis, durante el cual se producen cambios importantes como el del disco embrionario bilaminar que se convierte en disco embrionario trilaminar compuesto de tres capas germinales, llamadas ectodermo, mesodermo y endodermo, al transcurrir el desarrollo embriónico estas capas originan los tejidos y órganos del embrión.
+
+59. Pregunta:  Procesos que comprende el periodo embrionario. Concepto de Organogénesis: 
+59. Pista: c d c q p q l c e s t e l d ó q c u o.
+59. Respuesta: conjunto de cambios que permiten que las capas embrionarias se transformen en los diferentes órganos que conforman un organismo.

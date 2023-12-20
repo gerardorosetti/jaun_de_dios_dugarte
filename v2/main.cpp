@@ -13,7 +13,7 @@
 //Regular Expression
 #include <regex>
 
-const std::regex regexp{"[a-zA-Z0-9áéíóúñĺ]"};
+const std::regex regexp{"[a-zA-Z0-9áéíóúñÑĺ]"};
 using namespace std::literals::chrono_literals;
 
 #ifdef _WIN32

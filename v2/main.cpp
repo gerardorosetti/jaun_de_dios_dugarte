@@ -6,11 +6,11 @@
 #include <thread>
 #include <chrono>
 
-//test
+//Especial Chars
 #include <wchar.h>
 #include <locale.h>
-//test
 
+//Regular Expression
 #include <regex>
 
 const std::regex regexp{"[a-zA-Z0-9áéíóúñĺ]"};
@@ -82,8 +82,52 @@ std::vector<std::string> split(std::string string, char break_char = ' ')
     return result;
 }
 
+void print_questions_vector_data(std::vector<Question>& questions)
+{
+    std::cout << "\nNumero de Preguntas: " << questions.size() << std::endl << std::endl;
+
+    size_t index = 1;
+    
+    for (Question q: questions)
+    {
+        std::cout << index << ". ";
+        std::cout /*<< "Pregunta: "*/ << q.title << std::endl;
+
+        if (q.hint.length() > 0)
+        {
+            std::cout << index << ". ";
+            std::cout /*<< "Pista: "*/ << q.hint  << std::endl;
+        }
+
+        if (q.answer.size() == 0)
+        {
+            ++index;
+            continue;
+        }
+
+        if (q.answer.size() > 1)
+        {
+            std::cout << index << ". Respuesta: " << std::endl;
+            char letter = 'a';
+            for (std::string s : q.answer)
+            {
+                std::cout << "\t" << letter++ << ") " << s << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << index << ". Respuesta: " << q.answer[0]  << std::endl  << std::endl;
+        }
+
+        std::cout << std::endl;
+
+        ++index;
+    }
+}
+
 int main ()
 {
+    //Allow especial chars
     setlocale(LC_ALL, "");
 
     std::vector<Question> questions;
@@ -96,6 +140,7 @@ int main ()
 
     Question q{"", "", std::vector<std::string>{}};
 
+    //Getting the questions
     while(!data_file.eof())
     {
         std::string line;
@@ -145,7 +190,14 @@ int main ()
                     q.hint += temp[j];
                     q.hint += " ";
                 }
+
                 q.hint.pop_back();
+
+                if (q.hint == "Pista:")
+                {
+                    q.hint = "";
+                }
+                
                 break;
             }
             else if (s == "Respuesta:")
@@ -153,7 +205,7 @@ int main ()
                 if (i != temp.size() - 1)
                 {
                     std::string temp_ans = "";
-                    for (size_t j = i; j < temp.size(); ++j)
+                    for (size_t j = i + 1; j < temp.size(); ++j)
                     {
                         temp_ans += temp[j];
                         temp_ans += " ";
@@ -195,45 +247,7 @@ int main ()
 
     data_file.close();
 
-    std::cout << "\nNumero de Preguntas: " << questions.size() << std::endl << std::endl;
-
-    size_t index = 1;
-
-    for (Question q: questions)
-    {
-        std::cout << index << ". ";
-        std::cout /*<< "Pregunta: "*/ << q.title << std::endl;
-
-        if (q.hint.length() > 0)
-        {
-            std::cout << index << ". ";
-            std::cout /*<< "Pista: "*/ << q.hint  << std::endl;
-        }
-
-        if (q.answer.size() == 0)
-        {
-            ++index;
-            continue;
-        }
-
-        if (q.answer.size() > 1)
-        {
-            std::cout << index << ". Respuesta: " << std::endl;
-            char letter = 'a';
-            for (std::string s : q.answer)
-            {
-                std::cout << "\t" << letter++ << ") " << s << std::endl;
-            }
-        }
-        else
-        {
-            std::cout << index << ". " << q.answer[0]  << std::endl  << std::endl;
-        }
-
-        std::cout << std::endl;
-
-        ++index;
-    }
+    print_questions_vector_data(questions);
 
     return EXIT_SUCCESS;
 }

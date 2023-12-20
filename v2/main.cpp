@@ -11,6 +11,9 @@
 #include <locale.h>
 //test
 
+#include <regex>
+
+const std::regex regexp{"[a-zA-Z0-9áéíóú]"};
 using namespace std::literals::chrono_literals;
 
 #ifdef _WIN32
@@ -39,9 +42,9 @@ std::string to_lower(std::string s)
     std::string result = "";
 
     for (size_t i = 0; i < s.length(); ++i)
-    {        
+    {
         result += std::tolower(s[i]);
-    }    
+    }
 
     return result;
 }
@@ -52,13 +55,14 @@ std::string only_letters(std::string s)
 
     for (size_t i = 0; i < s.length(); ++i)
     {
-        if ( (s[i] >= 97 && s[i] <= 122) || (s[i] >= 160 && s[i] <= 164) || s[i] == 130 || s[i] == ' ')
+        // if ( (s[i] >= 97 && s[i] <= 122) /*|| (s[i] >= 160 && s[i] <= 164) || s[i] == 130*/ || s[i] == ' ')
+        if ( std::regex_match(std::string{s[i]}, regexp) || s[i] == ' ')
         {
             result += s[i];
         }
     }
 
-    return result;   
+    return result;
 }
 
 std::vector<std::string> split(std::string string, char break_char = ' ')
@@ -107,7 +111,7 @@ int main ()
             {
                 questions.push_back(q);
             }
-            
+
             q = Question{"", "", std::vector<std::string>{}};
             reading_answers = false;
             continue;
@@ -165,10 +169,10 @@ int main ()
                     // temp_ans = only_letters(temp_ans);
                     // q.answer.push_back(temp_ans);
                     q.answer.push_back(only_letters(to_lower(temp_ans)));
-                    break; 
+                    break;
                 }
-                reading_answers = true;  
-            } 
+                reading_answers = true;
+            }
         }
         if (reading_answers)
         {
@@ -176,7 +180,7 @@ int main ()
             {
                 continue;
             }
-            
+
             // continue;
             std::string temp_ans = "";
             // for (size_t i = std::min((size_t)2, temp.size()); i < temp.size(); ++i)
@@ -221,14 +225,14 @@ int main ()
         {
             std::cout << index << ". ";
             std::cout /*<< "Pista: "*/ << q.hint  << std::endl;
-        }        
+        }
 
         if (q.answer.size() == 0)
         {
             ++index;
             continue;
         }
-        
+
         if (q.answer.size() > 1)
         {
             std::cout << index << ". Respuesta: " << std::endl;

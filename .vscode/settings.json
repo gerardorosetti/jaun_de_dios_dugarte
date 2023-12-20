@@ -82,6 +82,9 @@
         "xutility": "cpp",
         "bitset": "cpp",
         "condition_variable": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "cinttypes": "cpp"
     }
 }

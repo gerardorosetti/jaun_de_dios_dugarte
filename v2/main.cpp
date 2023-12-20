@@ -212,7 +212,7 @@ int main ()
 
                 q.hint.pop_back();
 
-                if (q.hint == "Pista:")
+                if (q.hint == "Pista:" || q.hint == "Pista: ")
                 {
                     q.hint = "";
                 }
@@ -304,7 +304,10 @@ int main ()
                 std::cin >> start;
                 if (check_only_numbers(start))
                 {
-                    break;
+                    if (std::stoi(start) > 0)
+                    {
+                        break;
+                    }
                 }
                 print_no_valid_option_message();
             } while (true);
@@ -318,7 +321,10 @@ int main ()
                 std::cin >> end;
                 if (check_only_numbers(end))
                 {
-                    break;
+                    if (std::stoi(end) <= questions.size())
+                    {
+                        break;
+                    }
                 }
                 print_no_valid_option_message();
             } while (true);
@@ -360,7 +366,7 @@ int main ()
                         }
                     }
                     to_show.pop_back();
-                    return words_match_counter == v2.size();
+                    return words_match_counter == v1.size();
                 };
 
                 std::string big_ans = "";
@@ -470,12 +476,58 @@ int main ()
 
             std::getchar();
 
-            std::vector<Question> questions_temp{questions};
+            std::string start{""}, end{""};
+
+            do
+            {
+                print_initial_menu();
+                std::cout << "Seleccione con cual pregunta desea empezar: ";
+                std::cin >> start;
+                if (check_only_numbers(start))
+                {
+                    if (std::stoi(start) > 0)
+                    {
+                        break;
+                    }
+                }
+                print_no_valid_option_message();
+            } while (true);
+
+            clear();
+
+            do
+            {
+                print_initial_menu();
+                std::cout << "Seleccione con cual pregunta desea terminar: ";
+                std::cin >> end;
+                if (check_only_numbers(end))
+                {
+                    if (std::stoi(end) <= questions.size())
+                    {
+                        break;
+                    }
+                }
+                print_no_valid_option_message();
+            } while (true);
+
+            size_t start_index = std::stoi(start) - 1;
+            size_t end_index = std::stoi(end);
+
+            std::getchar();
+
+            std::vector<Question> questions_temp{};
+            for (size_t g = start_index; g < end_index; ++g)
+            {
+                questions_temp.push_back(questions[g]);
+            }
+            
             bool again = false;
             Question q;
+
             for (size_t index = 0; questions_temp.size() > 0; ++index)
             {
                 clear();
+
                 std::uniform_int_distribution<size_t> dis{0, questions_temp.size() - 1};
                 size_t num = dis(rng);
                 if (!again)
@@ -498,10 +550,115 @@ int main ()
                         q_temp_vec.push_back(q_aux);
                     }
                 }
+
                 std::cout << index + 1 << ") " << q.title << std::endl << q.hint << std::endl << "\nTu Respuesta: ";
                 std::string ans;
                 std::getline(std::cin, ans);
-               
+                
+                size_t words_match_counter = 0;
+                std::string to_show = "";
+
+                auto check_sentences_match = [&words_match_counter, &to_show] (std::string s1, std::string s2)
+                {
+                    //Lo mejor es que s1 sea el string de la respuesta ya correcta.
+                    std::vector<std::string> v1{split(only_letters(to_lower(s1)))};
+                    std::vector<std::string> v2{split(only_letters(to_lower(s2)))};
+                    bool result = true;
+                    for (std::string s1_temp : v1)
+                    {
+                        if (std::any_of(v2.begin(), v2.end(), [&s1_temp] (std::string s2_temp) { return s1_temp == s2_temp; }))
+                        {
+                            ++words_match_counter;
+                            to_show += s1_temp;
+                            to_show += ' ';
+                            continue;
+                        }
+                        for (size_t i = 0; i < s1_temp.length(); ++i)
+                        {
+                            to_show += "_ ";
+                        }
+                    }
+                    to_show.pop_back();
+                    return words_match_counter == v1.size();
+                };
+
+                std::string big_ans = "";
+
+                for (std::string ans_item : q.answer)
+                {
+                    big_ans += ans_item + ' ';
+                }
+
+                big_ans.pop_back();
+
+                if (!check_sentences_match(big_ans, ans))
+                {
+                    std::cout << "\nIncorrecto... ";
+                }
+                else std::cout << "\nExcelente!!! ";
+
+                std::cout << "Numero de palabras acertadas: " << words_match_counter << " / " << split(big_ans).size() << std::endl << std::endl;
+                
+                std::cout << "Coincidencias de tu Respuesta:" << std::endl << std::endl << to_show << std::endl << std::endl;
+
+                std::cout << "Respuesta esperada:" << std::endl << std::endl << big_ans << std::endl << std::endl;
+
+                std::string opt{""};
+
+                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
+
+                bool menu = false;
+                do
+                {
+                    std::cin >> opt;
+
+                    bool flag = false;
+
+                    if (check_only_numbers(opt))
+                    {
+                        switch (std::stoi(opt))
+                        {
+                            case 1: //Continuar
+                                flag = true;
+                                again = false;
+                                break;
+                            case 2: //Ir al Menu
+                                menu = true;
+                                flag = true;
+                                break;
+                            case 3: //Repetir
+                                --index;
+                                again = true;
+                                flag = true;
+                                break;
+                            case 4: //Reiniciar
+                                index = -1;
+                                flag = true;
+                                again = false;
+                                break;
+
+                            default:
+                                std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 4]: ";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 4]: ";
+                    }
+
+                    if (flag)
+                    {
+                        break;
+                    }
+
+                } while (true);
+
+                if (menu)
+                {
+                    break;
+                }  
+                std::getchar();
             }
         }
         else if(option == "3")

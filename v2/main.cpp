@@ -13,7 +13,7 @@
 
 #include <regex>
 
-const std::regex regexp{"[a-zA-Z0-9áéíóú]"};
+const std::regex regexp{"[a-zA-Z0-9áéíóúñĺ]"};
 using namespace std::literals::chrono_literals;
 
 #ifdef _WIN32
@@ -55,8 +55,7 @@ std::string only_letters(std::string s)
 
     for (size_t i = 0; i < s.length(); ++i)
     {
-        // if ( (s[i] >= 97 && s[i] <= 122) /*|| (s[i] >= 160 && s[i] <= 164) || s[i] == 130*/ || s[i] == ' ')
-        if ( std::regex_match(std::string{s[i]}, regexp) || s[i] == ' ')
+        if (std::regex_match(std::string{s[i]}, regexp) || s[i] == ' ')
         {
             result += s[i];
         }
@@ -88,10 +87,6 @@ int main ()
     setlocale(LC_ALL, "");
 
     std::vector<Question> questions;
-    // char t = 130;
-// std::cout << t << std::endl;
-// printf("%c",t);
-    // return 0;
 
     std::ifstream data_file{"data.txt"};
 
@@ -165,9 +160,6 @@ int main ()
                     }
                     temp_ans.pop_back();
                     temp_ans.pop_back();
-                    // temp_ans = to_lower(temp_ans);
-                    // temp_ans = only_letters(temp_ans);
-                    // q.answer.push_back(temp_ans);
                     q.answer.push_back(only_letters(to_lower(temp_ans)));
                     break;
                 }
@@ -181,28 +173,19 @@ int main ()
                 continue;
             }
 
-            // continue;
             std::string temp_ans = "";
-            // for (size_t i = std::min((size_t)2, temp.size()); i < temp.size(); ++i)
-            // {
-            //     temp_ans += temp[i];
-            //     temp_ans += " ";
-            // }
             for (size_t i = 0; i < temp.size(); ++i)
             {
                 if (temp[i][0] == '\t')
                 {
                     continue;
                 }
-                // std::cout << temp[i];
                 temp_ans += temp[i];
                 temp_ans += " ";
             }
-            // return 0;
             temp_ans.pop_back();
             temp_ans.pop_back();
             q.answer.push_back(only_letters(to_lower(temp_ans)));
-            // q.answer.push_back(temp_ans);
         }
     }
 

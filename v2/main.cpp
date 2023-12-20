@@ -34,13 +34,40 @@ struct Question
     std::vector<std::string> answer;
 };
 
+std::string to_lower(std::string s)
+{
+    std::string result = "";
+
+    for (size_t i = 0; i < s.length(); ++i)
+    {        
+        result += std::tolower(s[i]);
+    }    
+
+    return result;
+}
+
+std::string only_letters(std::string s)
+{
+    std::string result = "";
+
+    for (size_t i = 0; i < s.length(); ++i)
+    {
+        if ( (s[i] >= 97 && s[i] <= 122) || (s[i] >= 160 && s[i] <= 164) || s[i] == 130 || s[i] == ' ')
+        {
+            result += s[i];
+        }
+    }
+
+    return result;   
+}
+
 std::vector<std::string> split(std::string string, char break_char = ' ')
 {
     std::vector<std::string> result{};
     std::string temp = "";
     for (size_t i = 0; i < string.length(); ++i)
     {
-        if (string[i] == ' ')
+        if (string[i] == break_char)
         {
             result.push_back(temp);
             temp = "";
@@ -57,6 +84,10 @@ int main ()
     setlocale(LC_ALL, "");
 
     std::vector<Question> questions;
+    // char t = 130;
+// std::cout << t << std::endl;
+// printf("%c",t);
+    // return 0;
 
     std::ifstream data_file{"data.txt"};
 
@@ -118,49 +149,104 @@ int main ()
                 q.hint.pop_back();
                 break;
             }
-            else if (s == "Respuesta:") reading_answers = true;
+            else if (s == "Respuesta:")
+            {
+                if (i != temp.size() - 1)
+                {
+                    std::string temp_ans = "";
+                    for (size_t j = i; j < temp.size(); ++j)
+                    {
+                        temp_ans += temp[j];
+                        temp_ans += " ";
+                    }
+                    temp_ans.pop_back();
+                    temp_ans.pop_back();
+                    // temp_ans = to_lower(temp_ans);
+                    // temp_ans = only_letters(temp_ans);
+                    // q.answer.push_back(temp_ans);
+                    q.answer.push_back(only_letters(to_lower(temp_ans)));
+                    break; 
+                }
+                reading_answers = true;  
+            } 
         }
         if (reading_answers)
         {
-            continue;
+            if (temp[1] == "Respuesta:")
+            {
+                continue;
+            }
+            
+            // continue;
+            std::string temp_ans = "";
+            // for (size_t i = std::min((size_t)2, temp.size()); i < temp.size(); ++i)
+            // {
+            //     temp_ans += temp[i];
+            //     temp_ans += " ";
+            // }
+            for (size_t i = 0; i < temp.size(); ++i)
+            {
+                if (temp[i][0] == '\t')
+                {
+                    continue;
+                }
+                // std::cout << temp[i];
+                temp_ans += temp[i];
+                temp_ans += " ";
+            }
+            // return 0;
+            temp_ans.pop_back();
+            temp_ans.pop_back();
+            q.answer.push_back(only_letters(to_lower(temp_ans)));
+            // q.answer.push_back(temp_ans);
         }
     }
+
+    clear();
 
     questions.push_back(q);
 
     data_file.close();
 
-    std::cout << questions.size() <<std::endl;
+    std::cout << "\nNumero de Preguntas: " << questions.size() << std::endl << std::endl;
 
     size_t index = 1;
+
     for (Question q: questions)
     {
         std::cout << index << ". ";
         std::cout /*<< "Pregunta: "*/ << q.title << std::endl;
-        std::cout << index << ". ";
-        std::cout /*<< "Pista: "*/ << q.hint  << std::endl  << std::endl;
+
+        if (q.hint.length() > 0)
+        {
+            std::cout << index << ". ";
+            std::cout /*<< "Pista: "*/ << q.hint  << std::endl;
+        }        
+
+        if (q.answer.size() == 0)
+        {
+            ++index;
+            continue;
+        }
+        
+        if (q.answer.size() > 1)
+        {
+            std::cout << index << ". Respuesta: " << std::endl;
+            char letter = 'a';
+            for (std::string s : q.answer)
+            {
+                std::cout << "\t" << letter++ << ") " << s << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << index << ". " << q.answer[0]  << std::endl  << std::endl;
+        }
+
+        std::cout << std::endl;
+
         ++index;
     }
-    
-
-    // std::string temp[3];
-    // size_t index = 0;
-    // for (std::string line; std::getline(data_file, line); ++index)
-    // {
-    //     if (line.length() == 0)
-    //     {
-    //         index = -1;
-    //         continue;
-    //     }
-
-    //     temp[index] = line;
-    //     if (index == 2)
-    //     {
-    //         Question q{temp[0], temp[1], temp[2]};
-    //         questions.push_back(q);
-    //     }
-    // }
-
 
     return EXIT_SUCCESS;
 }

@@ -271,7 +271,6 @@ MENU FIN
 		.- Oligo o Hipoespermia: eyaculado menor a 2 ml.
 		.- Poli o Hiperespermia: eyaculado mayor a 6 ml.
 
-
 46. Pregunta: Líquido seminal o semen. Anomalías espermáticas:
 46. Pista: A, O, P, A, T, N.
 46. Respuesta:
@@ -338,3 +337,120 @@ MENU FIN
 59. Pregunta:  Procesos que comprende el periodo embrionario. Concepto de Organogénesis: 
 59. Pista: c d c q p q l c e s t e l d ó q c u o.
 59. Respuesta: conjunto de cambios que permiten que las capas embrionarias se transformen en los diferentes órganos que conforman un organismo.
+
+60. Pregunta: Procesos que comprende el periodo embrionario. Concepto de Morfogénesis:
+60. Pista: i l f d l t, d l ó y d l o c y l p d v t d c e.
+60. Respuesta: incluye la forma de los tejidos, de los órganos y de los organismos completos y las posiciones de varios tipos de células especializadas.
+
+61. Pregunta: Procesos que comprende el periodo embrionario. Concepto de Histogénesis:
+61. Pista: c e l f d l t m.
+61. Respuesta: consiste en la formación de los tejidos maduros.
+
+62. Pregunta: Funciones de las glándulas anexas:
+62. Pista:
+62. Respuesta:
+	.- Forman el plasma seminal junto con los espermatozoides (formando el semen).
+	.- Proporcionan el medio líquido para el transporte de los espermatozoides.
+	.- Aportan nutrientes para los espermatozoides.
+
+63. Pregunta: Características de un espermatozoide maduro:
+63. Pista:
+63. Respuesta:
+	.- Acrosoma.
+	.- Núcleo.
+	.- Pieza intermedia.
+	.- Flagelo. 
+
+64. Pregunta: Características de un espermatozoide maduro. Acrosoma:
+64. Pista: O c d e q f l e a l z p d ó.
+64. Respuesta: Orgánulo contenedor de enzimas que facilitan la entrada a la zona pelúcida del óvulo.
+
+65. Pregunta: Características de un espermatozoide maduro. Pieza intermedia:
+65. Pista: C m q p t d a n p s a.
+65. Respuesta: Contiene mitocondrias que proporcionan trifosfato de adenosina necesario para su actividad.
+
+66. Pregunta: Características de un espermatozoide maduro. Flagelo:
+66. Pista: p m a e.
+66. Respuesta: Proporciona movilidad al espermatozoide.
+
+67. Pregunta: Movilidad espermática. TIPO A:
+67. Pista: m p, r y r.
+67. Respuesta: movilidad progresiva, rápida y rectilínea.
+
+68. Pregunta: Movilidad espermática. TIPO B:
+68. Pista: m p, p l.
+68. Respuesta: movilidad progresiva, pero lenta.
+
+69. Pregunta: Movilidad espermática. TIPO C:
+69. Pista: l e s m, p n a.
+69. Respuesta: los espermatozoides se mueven, pero no avanzan.
+
+70. Pregunta: Movilidad espermática. TIPO D:
+70. Pista: e i.
+70. Respuesta: espermatozoides inmóviles.
+
+71. Pregunta: El aparato genital femenino está constituido por:
+71. Pista:
+71. Respuesta:
+		a.- Gónadas: Ovarios.
+		b.- Vías sexuales.
+		c.- Genitales externos. 
+		d.- Glándulas anexas.
+
+72. Pregunta: Características macroscópicas de los ovarios:
+72. Pista: número, forma, longitud, ubicación, función. 
+72. Respuesta:
+	a.- Órganos pares.
+	b.- Ovoides.
+	c.- Longitud: 2 a 5 cm aprox.
+	d.- Ubicación: cavidad pélvica (fosita ovárica).
+	e.- Función citocrina y endocrina.
+
+73. Pregunta: Características microscópicas de los ovarios:
+73. Pista:
+73. Respuesta: Epitelio ovárico, Zona cortical, Zona medular. 
+
+74. Pregunta:  VÍAS GENITALES del aparato genital femenino. Las podemos dividir en:
+74. Pista:
+74. Respuesta:
+		a.- Trompas uterinas.
+		b.- Útero.
+		c.- Vagina.
+
+75. Pregunta: Trompas uterinas o de Falopio. Características:
+75. Pista: número, límites, partes, función.
+75. Respuesta:
+	.- Órgano par.
+	.- Se extiende desde el extremo del ovario al ángulo superior del útero.
+	.- Partes: porción intramural, Istmo, ampolla e infundíbulo.
+	.- Función de transporte. 
+
+76. Pregunta: Útero. Características:
+76. Pista: forma, longitud, ubicación, partes, función.
+76. Respuesta:
+	.- Órgano hueco, piriforme, muscular.
+	.- Mide de 7 a 9 cm de longitud.
+	.- Se ubica en el centro de la pélvica, entre vejiga y recto.
+	.- Partes: Fondo, cuerpo, istmo, y cuello. 
+	.- Órgano de la gestación.
+
+77. Pregunta: Útero. Está formado por tres capas:
+77. Pista:
+77. Respuesta: Endometrio, Miometrio, Perimetrio.
+
+78. Pregunta: Vagina. Características:
+78. Pista: tipo de órgano, comunicaciones, longitud, ubicación, función.
+78. Respuesta:
+	.- Órgano musculo membranoso.
+	.- Comunica el útero con la vulva.
+	.- Mide de 8 a 12 cm de longitud. 
+	.- Se encuentra entre la vejiga y el recto. 
+	.- Órgano de la cópula y vía del parto.
+
+79. Pregunta: APARATO GENITAL FEMENINO. GENITALES EXTERNOS. En conjunto denominados Vulva, comprende:
+79. Pista:
+79. Respuesta:
+	a.- Monte de venus.
+	b.- Labios mayores y menores.
+	c.- Vestíbulo vaginal. 
+	d.- Clítoris.

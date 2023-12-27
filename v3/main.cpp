@@ -13,6 +13,7 @@
 //Regular Expression
 #include <regex>
 
+// const std::regex regexp{"[a-zA-Z0-9áÁéÉíÍóÓúÚñÑĺ]"};
 const std::regex regexp{"[a-zA-Z0-9áéíóúñÑĺ]"};
 using namespace std::literals::chrono_literals;
 
@@ -142,6 +143,35 @@ void print_questions_vector_data(std::vector<Question>& questions)
 
         ++index;
     }
+}
+
+void print_no_valid_option_message()
+{
+    std::cout << "\n\tOpcion no valida, intente nuevamente\n\n";
+    std::this_thread::sleep_for(2s);
+};
+
+bool ask_clear_terminal()
+{
+    bool clear_terminal = false;
+    do
+    {
+        std::string s_ans;
+        std::cout << "\nDesea Borrar el Terminal? (S/N): ";
+        std::cin >> s_ans;
+        if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
+        {
+            // clear();
+            clear_terminal = true;
+            break;
+        }
+        else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
+        {
+            break;
+        }
+        print_no_valid_option_message();
+    } while (true);
+    return clear_terminal;
 }
 
 int main ()
@@ -279,21 +309,21 @@ int main ()
     {
         clear();
 
-        std::cout << "Bienvenido al Asistente de Estudio de\n\t    Juan Dugarte" << std::endl;
+        std::cout << "\tBienvenido al Asistente de Estudio de\n\t    Juan De Dios Dugarte Masso" << std::endl;
         std::cout << std::endl;
         for (std::string line : initial_menu_lines)
         {
-            std::cout << line << std::endl;
+            std::cout << line << std::endl << std::endl;
         }
-        std::cout << std::endl;
+        // std::cout << std::endl;
     };
 
-    auto print_no_valid_option_message = [] ()
-    {
-        clear();
-        std::cout << "\n\n\tOpcion no valida, intente nuevamente\n\n";
-        std::this_thread::sleep_for(2s);
-    };
+    // auto print_no_valid_option_message = [] ()
+    // {
+    //     // clear();
+    //     std::cout << "\n\tOpcion no valida, intente nuevamente\n\n";
+    //     std::this_thread::sleep_for(2s);
+    // };
 
     do
     {
@@ -304,13 +334,13 @@ int main ()
         std::cin >> option;
         if (option == "1")
         {
-            clear();
+            // clear();
             std::getchar();
             std::string start{""}, end{""};
 
             do
             {
-                print_initial_menu();
+                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea empezar: ";
                 std::cin >> start;
                 if (check_only_numbers(start))
@@ -323,11 +353,11 @@ int main ()
                 print_no_valid_option_message();
             } while (true);
 
-            clear();
+            // clear();
 
             do
             {
-                print_initial_menu();
+                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea terminar: ";
                 std::cin >> end;
                 if (check_only_numbers(end))
@@ -344,10 +374,14 @@ int main ()
             size_t end_index = std::stoi(end);
 
             std::getchar();
-
+            bool clear_terminal = true;
             for (size_t index = start_index; index < end_index; ++index)
             {
-                clear();
+                if(clear_terminal){
+                    clear();
+                }
+                else 
+                    clear_terminal = true;
                 Question q = questions[index];
                 std::cout << index + 1 << ") " << q.title << std::endl << q.hint << std::endl << "\nTu Respuesta: ";
                 std::string ans;
@@ -397,7 +431,7 @@ int main ()
 
                 std::cout << "Numero de palabras acertadas: " << words_match_counter << " / " << split(big_ans).size() << std::endl << std::endl;
                 
-                std::cout << "Coincidencias de tu Respuesta:" << std::endl << std::endl << to_show << std::endl << std::endl;
+                std::cout << "Coincidencias de tu Respuesta: " << to_show << std::endl << std::endl;
 
                 // std::cout << "Respuesta esperada:" << std::endl << std::endl << big_ans << std::endl << std::endl;
 
@@ -418,8 +452,8 @@ int main ()
                     
                     original_ans += c_temp + temp_s + "\n";
                 }
-
-                std::cout << "Respuesta esperada:" << std::endl << std::endl << /*big_ans*/original_ans << std::endl << std::endl;
+                
+                std::cout << q.title << ": " << /*big_ans*/original_ans << std::endl;
 
                 std::string opt{""};
 
@@ -438,24 +472,6 @@ int main ()
                         {
                             case 1: //Continuar
                                 flag = true;
-                                do
-                                {
-                                    std::string s_ans;
-                                    std::cout << "\nEstas seguro? (S/N): ";
-                                    std::cin >> s_ans;
-                                    if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
-                                    {
-                                        flag = true;
-                                        break;
-                                    }
-                                    else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
-                                    {
-                                        flag = false;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
-                                        break;
-                                    }
-                                    std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
-                                } while (true);
                                 break;
                             case 2: //Ir al Menu
                                 menu = true;
@@ -469,6 +485,30 @@ int main ()
                                     {
                                         flag = true;
                                         menu = true;
+                                        do
+                                        {
+                                            std::cout << "\nDesea Solo Imprimir el Menu? (S/N): ";
+                                            std::cin >> s_ans;
+                                            if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
+                                            {
+                                                // clear_terminal = true;
+                                                menu = false;
+                                                flag = false;
+                                                std::cout << std::endl;
+                                                for (std::string line : initial_menu_lines)
+                                                {
+                                                    std::cout << line << std::endl << std::endl;
+                                                }
+                                                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
+                                                // clear_terminal = false;
+                                                break;
+                                            }
+                                            else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
+                                            {
+                                                break;
+                                            }
+                                            std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
+                                        } while (true);
                                         break;
                                     }
                                     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
@@ -484,48 +524,48 @@ int main ()
                             case 3: //Repetir
                                 --index;
                                 flag = true;
-                                do
-                                {
-                                    std::string s_ans;
-                                    std::cout << "\nEstas seguro? (S/N): ";
-                                    std::cin >> s_ans;
-                                    if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
-                                    {
-                                        flag = true;
-                                        break;
-                                    }
-                                    else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
-                                    {
-                                        flag = false;
-                                        ++index;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
-                                        break;
-                                    }
-                                    std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
-                                } while (true);
+                                clear_terminal = ask_clear_terminal();
+                                std::cout << std::endl;
+                                // do
+                                // {
+                                //     std::string s_ans;
+                                //     std::cout << "\nEstas seguro? (S/N): ";
+                                //     std::cin >> s_ans;
+                                //     if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
+                                //     {
+                                //         flag = true;
+                                //         clear_terminal = ask_clear_terminal();
+                                //         std::cout << std::endl;
+                                //         // do
+                                //         // {
+                                //         //     std::cout << "\nDesea Borrar el Terminal? (S/N): ";
+                                //         //     std::cin >> s_ans;
+                                //         //     if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
+                                //         //     {
+                                //         //         clear_terminal = true;
+                                //         //         break;
+                                //         //     }
+                                //         //     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
+                                //         //     {
+                                //         //         break;
+                                //         //     }
+                                //         //     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
+                                //         // } while (true);
+                                //         break;
+                                //     }
+                                //     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
+                                //     {
+                                //         flag = false;
+                                //         ++index;
+                                //         std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
+                                //         break;
+                                //     }
+                                //     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
+                                // } while (true);
                                 break;
                             case 4: //Volver
                                 index -= 2;
                                 flag = true;
-                                do
-                                {
-                                    std::string s_ans;
-                                    std::cout << "\nEstas seguro? (S/N): ";
-                                    std::cin >> s_ans;
-                                    if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
-                                    {
-                                        flag = true;
-                                        break;
-                                    }
-                                    else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
-                                    {
-                                        flag = false;
-                                        index += 2;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
-                                        break;
-                                    }
-                                    std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
-                                } while (true);
                                 break;
                             case 5: //Reiniciar
                                 
@@ -624,7 +664,7 @@ int main ()
 
             do
             {
-                print_initial_menu();
+                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea empezar: ";
                 std::cin >> start;
                 if (check_only_numbers(start))
@@ -637,11 +677,11 @@ int main ()
                 print_no_valid_option_message();
             } while (true);
 
-            clear();
+            // clear();
 
             do
             {
-                print_initial_menu();
+                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea terminar: ";
                 std::cin >> end;
                 if (check_only_numbers(end))
@@ -671,7 +711,7 @@ int main ()
             // for (size_t index = start_index; questions_temp.size() > 0; /*++index*/)
             while (questions_temp.size() > 0)
             {
-                clear();
+                // clear();
                 size_t index;
                 std::uniform_int_distribution<size_t> dis{0, questions_temp.size() - 1};
                 size_t num = dis(rng);

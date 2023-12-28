@@ -104,19 +104,17 @@ std::vector<std::string> split(std::string string, char break_char = ' ')
 void print_questions_vector_data(std::vector<Question>& questions)
 {
     std::cout << "\nNumero de Preguntas: " << questions.size() << std::endl << std::endl;
-
-    // size_t index = 1;
     
     for (Question q: questions)
     {
         size_t index = q.number;
         std::cout << index << ". ";
-        std::cout /*<< "Pregunta: "*/ << q.title << std::endl;
+        std::cout << q.title << std::endl;
 
         if (q.hint.length() > 0)
         {
             std::cout << index << ". ";
-            std::cout /*<< "Pista: "*/ << q.hint  << std::endl;
+            std::cout << q.hint  << std::endl;
         }
 
         if (q.answer.size() == 0)
@@ -161,7 +159,6 @@ bool ask_clear_terminal()
         std::cin >> s_ans;
         if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
         {
-            // clear();
             clear_terminal = true;
             break;
         }
@@ -220,16 +217,6 @@ int main ()
             reading_answers = false;
             continue;
         }
-        // if(menu_flag && line == "MENU FIN")
-        // {
-        //     menu_flag = false;
-        //     continue;
-        // }
-        // if(menu_flag)
-        // {
-        //     initial_menu_lines.push_back(line);
-        //     continue;
-        // }
 
         std::vector<std::string> temp{split(line)};
 
@@ -276,7 +263,6 @@ int main ()
                     }
                     temp_ans.pop_back();
                     q.answer_original.push_back(temp_ans);
-                    // temp_ans.pop_back();
                     q.answer.push_back(only_letters(to_lower(temp_ans)));
                     break;
                 }
@@ -291,22 +277,13 @@ int main ()
             }
 
             std::string temp_ans = "";
-            // std::string temp_org_ans = "";
             for (size_t i = 0; i < temp.size(); ++i)
             {
-                // temp_org_ans += temp[i];
-                // temp_org_ans += " ";
-                // if (temp[i][0] == '\t')
-                // {
-                //     continue;
-                // }
                 temp_ans += temp[i];
                 temp_ans += " ";
             }
             temp_ans.pop_back();
-            // q.answer_original.push_back(temp_org_ans);
             q.answer_original.push_back(temp_ans);
-            // temp_ans.pop_back();
             q.answer.push_back(only_letters(to_lower(temp_ans)));
         }
     }
@@ -315,9 +292,6 @@ int main ()
     questions.push_back(q);
 
     data_file.close();
-
-                    // print_questions_vector_data(questions);
-                    // getchar();
 
     auto print_initial_menu = [&initial_menu_lines] ()
     {
@@ -329,18 +303,9 @@ int main ()
         {
             std::cout << line << std::endl;
         }
-        // std::cout << std::endl;
     };
 
-    // auto print_no_valid_option_message = [] ()
-    // {
-    //     // clear();
-    //     std::cout << "\n\tOpcion no valida, intente nuevamente\n\n";
-    //     std::this_thread::sleep_for(2s);
-    // };
-
     std::string option{""};
-    // std::cin >> option;
 
     do
     {
@@ -349,25 +314,16 @@ int main ()
             print_initial_menu();
             std::cout << "Seleccione de que manera le gustaria trabajar:" << std::endl;
             std::cout << "1) Modo Ordenado\n2) Modo Aleatorio\n3) Salir\n\nIngrese su opcion [1, 2 o 3]: ";
-            // std::string option;
             std::cin >> option;
             std::getchar();
         }
-        // print_initial_menu();
-        // std::cout << "Seleccione de que manera le gustaria trabajar:" << std::endl;
-        // std::cout << "1) Modo Ordenado\n2) Modo Aleatorio\n3) Salir\n\nIngrese su opcion [1, 2 o 3]: ";
-        // std::string option;
-        // std::cin >> option;
         if (option == "1")
         {
-            // clear();
-            // std::getchar();
             option = "";
             std::string start{""}, end{""};
 
             do
             {
-                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea empezar: ";
                 std::cin >> start;
                 if (check_only_numbers(start))
@@ -380,11 +336,8 @@ int main ()
                 print_no_valid_option_message();
             } while (true);
 
-            // clear();
-
             do
             {
-                // print_initial_menu();
                 std::cout << "Seleccione con cual pregunta desea terminar: ";
                 std::cin >> end;
                 if (check_only_numbers(end))
@@ -465,22 +418,7 @@ int main ()
                 {
                     original_ans += "\n\n";
                 }
-                // char c = 'a';
-                // for (std::string temp_s: q.answer_original)
-                // {
-                //     std::string c_temp{""};
-                //     if (q.answer_original.size() > 1)
-                //     {
-                //         c_temp = std::string{c++};
-                //         c_temp += ") ";
-                //     }
-                //     else
-                //     {
-                //         c_temp = "";
-                //     }
-                    
-                //     original_ans += c_temp + temp_s + "\n";
-                // }
+
                 for (std::string temp_s: q.answer_original)
                 {
                     std::string no_space = temp_s;
@@ -492,8 +430,6 @@ int main ()
 
                 std::string opt{""};
 
-                // std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
-//  "7) Redefinir Rango" << std::endl
                 std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a"  << std::endl << "7) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 7]: ";
 
                 bool menu = false;
@@ -627,7 +563,6 @@ int main ()
                                 } while (true);
                                 break;
                             case 7: //Redefinir Rango
-                                // option = "1";
                                 do
                                 {
                                     std::string s_ans;
@@ -677,8 +612,6 @@ int main ()
             option = "";
             std::random_device rd{};
             std::mt19937_64 rng(rd());
-
-            // std::getchar();
 
             std::string start{""}, end{""};
 
@@ -762,21 +695,18 @@ int main ()
                 size_t words_match_counter = 0;
                 std::string to_show = "";
 
-                auto check_sentences_match = [&words_match_counter, &to_show] (std::string s1, std::string s2/*, std::string s3*/)
+                auto check_sentences_match = [&words_match_counter, &to_show] (std::string s1, std::string s2)
                 {
                     //Lo mejor es que s1 sea el string de la respuesta ya correcta.
                     std::vector<std::string> v1{split(only_letters(to_lower(s1)))};
                     std::vector<std::string> v2{split(only_letters(to_lower(s2)))};
-                    // std::vector<std::string> v_aux{s1};
                     bool result = true;
-                    // size_t idx = 0;
                     for (std::string s1_temp : v1)
                     {
                         if (std::any_of(v2.begin(), v2.end(), [&s1_temp] (std::string s2_temp) { return s1_temp == s2_temp; }))
                         {
                             ++words_match_counter;
                             to_show += s1_temp;
-                            // to_show += v_aux[idx];
                             to_show += ' ';
                             continue;
                         }
@@ -784,19 +714,12 @@ int main ()
                         {
                             to_show += "_ ";
                         }
-                        // ++idx;
                     }
                     to_show.pop_back();
                     return words_match_counter == v1.size();
                 };
 
                 std::string big_ans = "";
-                // std::string big_ans_org = "";
-
-                // for (std::string ans_item : q.answer_original)
-                // {
-                //     big_ans_org += ans_item + ' ';
-                // }
 
                 for (std::string ans_item : q.answer)
                 {
@@ -848,26 +771,6 @@ int main ()
                         switch (std::stoi(opt))
                         {
                             case 1: //Continuar
-                                // flag = true;
-                                // do
-                                // {
-                                //     std::string s_ans;
-                                //     std::cout << "\nEstas seguro? (S/N): ";
-                                //     std::cin >> s_ans;
-                                //     if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
-                                //     {
-                                //         flag = true;
-                                //         again = false;
-                                //         break;
-                                //     }
-                                //     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
-                                //     {
-                                //         flag = false;
-                                //         std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
-                                //         break;
-                                //     }
-                                //     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
-                                // } while (true);
                                 flag = true;
                                 again = false;
                                 break;
@@ -944,7 +847,7 @@ int main ()
                                     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
                                 } while (true);
                                 break;
-                            case 5:
+                            case 5: //Redefinir Rango
                                 do
                                 {
                                     std::string s_ans;
@@ -954,7 +857,6 @@ int main ()
                                     {
                                         flag = true;
                                         menu = true;
-                                        // again = false;
                                         option = "2";
                                         break;
                                     }

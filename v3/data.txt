@@ -411,7 +411,7 @@ MENU FIN
 73. Respuesta: Epitelio ovárico, Zona cortical, Zona medular. 
 
 74. Pregunta:  VÍAS GENITALES del aparato genital femenino. Las podemos dividir en:
-74. Pista:
+74. Pista: "LLENAR PISTA"
 74. Respuesta:
 		a.- Trompas uterinas.
 		b.- Útero.
@@ -454,3 +454,7 @@ MENU FIN
 	b.- Labios mayores y menores.
 	c.- Vestíbulo vaginal. 
 	d.- Clítoris.
+
+80. Pregunta: Espermatogénesis. Fase de maduración. Concepto:
+80. Pista: "LLENAR PISTA"
+80. Respuesta: Los espermatocitos de primer orden sufren la primera división meiótica (reduccional) y producen dos espermatocitos de segundo orden, que tienen 23 cromosomas con dos cromátidas. Estos sufren la segunda meiosis (ecuacional) y producen cuatro espermátidas, que poseen 23 cromosomas con una sola cromátida.

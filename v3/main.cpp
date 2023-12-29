@@ -14,6 +14,8 @@
 #include <regex>
 
 const std::regex regexp{"[a-zA-Z0-9áÁéÉíÍóÓúÚñÑĺ]"};
+const std::regex regexp_only_letters1{"[a-zA-ZáÁéÉíÍóÓúÚñÑĺÚ]"};
+const std::regex regexp_only_letters2{"[a-zA-Z]"};
 // const std::regex regexp{"[a-zA-Z0-9áéíóúñÑĺ]"};
 using namespace std::literals::chrono_literals;
 
@@ -190,6 +192,7 @@ int main ()
 
     //Getting the questions
     size_t question_number = 0;
+    bool auto_hint{false};
     while(!data_file.eof())
     {
         
@@ -215,6 +218,7 @@ int main ()
 
             q = Question{"", "", std::vector<std::string>{}};
             reading_answers = false;
+            auto_hint = false;
             continue;
         }
 
@@ -248,6 +252,12 @@ int main ()
                 {
                     q.hint = "";
                 }
+
+                if (q.hint == "Pista: \"LLENAR PISTA\"")
+                {
+                    q.hint = "Pista: ";
+                    auto_hint = true;
+                }
                 
                 break;
             }
@@ -264,6 +274,43 @@ int main ()
                     temp_ans.pop_back();
                     q.answer_original.push_back(temp_ans);
                     q.answer.push_back(only_letters(to_lower(temp_ans)));
+
+                    if (auto_hint)
+                    {
+                        // q.hint += temp_ans[0];
+                        bool take{true};
+                        for (size_t g = 0; g < temp_ans.length(); ++g)
+                        {
+                            if (take)
+                            {
+                                if (temp_ans[g] == '(' && (g + 1) < temp_ans.length())
+                                {
+                                    q.hint += "(";
+                                    q.hint +=  temp_ans[g + 1];
+                                    q.hint +=  ") ";   
+                                    ++g;
+                                    take = false;
+                                    continue;
+                                }
+                                q.hint += temp_ans[g];
+                                q.hint += " ";
+                                take = false;
+                            }
+                            if (temp_ans[g] == ' ')
+                            {
+                                take = true;
+                            }
+                            if (temp_ans[g] == ',' || temp_ans[g] == ';' || temp_ans[g] == ':' || temp_ans[g] == '.' || temp_ans[g] == '?' || temp_ans[g] == '!' || temp_ans[g] == '$')
+                            {
+                                q.hint.pop_back();
+                                q.hint += temp_ans[g];
+                                q.hint += ' ';
+                            }
+                        }
+                        auto_hint = false;
+                    }
+                    
+
                     break;
                 }
                 reading_answers = true;
@@ -285,6 +332,39 @@ int main ()
             temp_ans.pop_back();
             q.answer_original.push_back(temp_ans);
             q.answer.push_back(only_letters(to_lower(temp_ans)));
+
+
+            if (auto_hint)
+            {
+                for (size_t g = 0; g < temp_ans.length(); ++g)
+                {
+                    // if (std::tolower(temp_ans[g]) >= 97 && std::tolower(temp_ans[g]) <= 122)
+                    if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters2))
+                    {
+                        if (g + 1 < temp_ans.length())
+                        {
+                            if (std::regex_match(std::string{temp_ans[g + 1]}, regexp_only_letters1) || temp_ans[g] == ' ')
+                            {                                
+                                q.hint += temp_ans[g];
+                                q.hint += ' ';
+                                break;
+                            }
+                        }
+                    }
+                    else if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters1))
+                    {
+                        if (g + 1 < temp_ans.length())
+                        {
+                            if (std::regex_match(std::string{temp_ans[g + 2]}, regexp_only_letters1) || temp_ans[g] == ' ')
+                            {                                
+                                q.hint += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
+                                q.hint += ' ';
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -900,6 +980,7 @@ int main ()
         else
         {
             print_no_valid_option_message();
+            option = "";
         }
     } while (true);
     

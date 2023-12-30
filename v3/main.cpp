@@ -224,8 +224,71 @@ int main ()
 
         std::vector<std::string> temp{split(line)};
 
+        auto return_letter = [&] (std::string temp_ans, size_t g)
+        {
+            std::string result_string{""};
+            if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters2))
+            {
+                if (g + 1 < temp_ans.length())
+                {
+                    if (std::regex_match(std::string{temp_ans[g + 1]}, regexp_only_letters1) || temp_ans[g + 1] == ' ')
+                    {                                
+                        // q.hint += temp_ans[g];
+                        // q.hint += ' ';
+                        result_string += temp_ans[g];
+                        result_string += ' ';
+                        // break;
+                    }
+                }
+            }
+            else if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters1))
+            {
+                if (g + 1 < temp_ans.length())
+                {
+                    if (std::regex_match(std::string{temp_ans[g + 2]}, regexp_only_letters1) || temp_ans[g + 2] == ' ')
+                    {                                
+                        // q.hint += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
+                        // q.hint += ' ';
+                        result_string += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
+                        result_string += ' ';
+                        // break;
+                    }
+                }
+            }
+            return result_string;
+        };
+
         for (size_t i = 0; i < temp.size(); ++i)
         {
+
+            // auto take_letter = [&] (std::string temp_ans, size_t g)
+            // {
+            //     if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters2))
+            //     {
+            //         if (g + 1 < temp_ans.length())
+            //         {
+            //             if (std::regex_match(std::string{temp_ans[g + 1]}, regexp_only_letters1) || temp_ans[g] == ' ')
+            //             {                                
+            //                 q.hint += temp_ans[g];
+            //                 q.hint += ' ';
+            //                 // break;
+            //             }
+            //         }
+            //     }
+            //     else if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters1))
+            //     {
+            //         if (g + 1 < temp_ans.length())
+            //         {
+            //             if (std::regex_match(std::string{temp_ans[g + 2]}, regexp_only_letters1) || temp_ans[g] == ' ')
+            //             {                                
+            //                 q.hint += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
+            //                 q.hint += ' ';
+            //                 // break;
+            //             }
+            //         }
+            //     }
+            // };
+
             std::string s = temp[i];
             if (s == "Pregunta:")
             {
@@ -286,14 +349,16 @@ int main ()
                                 if (temp_ans[g] == '(' && (g + 1) < temp_ans.length())
                                 {
                                     q.hint += "(";
-                                    q.hint +=  temp_ans[g + 1];
+                                    // q.hint +=  temp_ans[g + 1];
+                                    q.hint +=  return_letter(temp_ans, g + 1);
                                     q.hint +=  ") ";   
                                     ++g;
                                     take = false;
                                     continue;
                                 }
-                                q.hint += temp_ans[g];
-                                q.hint += " ";
+                                // q.hint += temp_ans[g];
+                                // q.hint += " ";
+                                q.hint += return_letter(temp_ans, g);
                                 take = false;
                             }
                             if (temp_ans[g] == ' ')
@@ -339,30 +404,37 @@ int main ()
                 for (size_t g = 0; g < temp_ans.length(); ++g)
                 {
                     // if (std::tolower(temp_ans[g]) >= 97 && std::tolower(temp_ans[g]) <= 122)
-                    if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters2))
+                    // if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters2))
+                    // {
+                    //     if (g + 1 < temp_ans.length())
+                    //     {
+                    //         if (std::regex_match(std::string{temp_ans[g + 1]}, regexp_only_letters1) || temp_ans[g] == ' ')
+                    //         {                                
+                    //             q.hint += temp_ans[g];
+                    //             q.hint += ' ';
+                    //             break;
+                    //         }
+                    //     }
+                    // }
+                    // else if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters1))
+                    // {
+                    //     if (g + 1 < temp_ans.length())
+                    //     {
+                    //         if (std::regex_match(std::string{temp_ans[g + 2]}, regexp_only_letters1) || temp_ans[g] == ' ')
+                    //         {                                
+                    //             q.hint += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
+                    //             q.hint += ' ';
+                    //             break;
+                    //         }
+                    //     }
+                    // }
+                    std::string lambda_result{return_letter(temp_ans, g)};
+                    if (lambda_result != "")
                     {
-                        if (g + 1 < temp_ans.length())
-                        {
-                            if (std::regex_match(std::string{temp_ans[g + 1]}, regexp_only_letters1) || temp_ans[g] == ' ')
-                            {                                
-                                q.hint += temp_ans[g];
-                                q.hint += ' ';
-                                break;
-                            }
-                        }
+                        q.hint += lambda_result;
+                        break;
                     }
-                    else if (std::regex_match(std::string{temp_ans[g]}, regexp_only_letters1))
-                    {
-                        if (g + 1 < temp_ans.length())
-                        {
-                            if (std::regex_match(std::string{temp_ans[g + 2]}, regexp_only_letters1) || temp_ans[g] == ' ')
-                            {                                
-                                q.hint += std::string{temp_ans[g]} + std::string{temp_ans[g + 1]};
-                                q.hint += ' ';
-                                break;
-                            }
-                        }
-                    }
+                    
                 }
             }
         }
@@ -375,9 +447,9 @@ int main ()
 
     auto print_initial_menu = [&initial_menu_lines] ()
     {
-        clear();
+        // clear();
 
-        std::cout << "\tBienvenido al Asistente de Estudio de\n\t    Juan De Dios Dugarte Masso" << std::endl;
+        // std::cout << "\tBienvenido al Asistente de Estudio de\n\t    Juan De Dios Dugarte Masso" << std::endl;
         std::cout << std::endl;
         for (std::string line : initial_menu_lines)
         {
@@ -391,6 +463,8 @@ int main ()
     {
         if (option == "")
         {            
+            clear();
+            std::cout << "\tBienvenido al Asistente de Estudio de\n\t    Juan De Dios Dugarte Masso" << std::endl;
             print_initial_menu();
             std::cout << "Seleccione de que manera le gustaria trabajar:" << std::endl;
             std::cout << "1) Modo Ordenado\n2) Modo Aleatorio\n3) Salir\n\nIngrese su opcion [1, 2 o 3]: ";
@@ -546,11 +620,12 @@ int main ()
                                             {
                                                 menu = false;
                                                 flag = false;
-                                                std::cout << std::endl;
-                                                for (std::string line : initial_menu_lines)
-                                                {
-                                                    std::cout << line << std::endl << std::endl;
-                                                }
+                                                // std::cout << std::endl;
+                                                // for (std::string line : initial_menu_lines)
+                                                // {
+                                                //     std::cout << line << std::endl << std::endl;
+                                                // }
+                                                print_initial_menu();
                                                 std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu\t3) Repetir" << std::endl << "4) Volver\t5) Reiniciar\t6) Ir a"  << std::endl << "7) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 7]: ";
                                                 break;
                                             }
@@ -651,6 +726,7 @@ int main ()
                                     if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
                                     {
                                         flag = true;
+                                        menu = true;
                                         option = "1";
                                         break;
                                     }
@@ -874,11 +950,12 @@ int main ()
                                             {
                                                 menu = false;
                                                 flag = false;
-                                                std::cout << std::endl;
-                                                for (std::string line : initial_menu_lines)
-                                                {
-                                                    std::cout << line << std::endl << std::endl;
-                                                }
+                                                // std::cout << std::endl;
+                                                // for (std::string line : initial_menu_lines)
+                                                // {
+                                                //     std::cout << line << std::endl;dasdasd
+                                                // }
+                                                print_initial_menu();
                                                 std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
                                                 break;
                                             }

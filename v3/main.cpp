@@ -761,20 +761,23 @@ int main ()
             std::getchar();
 
             std::vector<Question> questions_temp{};
+            std::vector<Question> questions_temp_memo{};
+            std::vector<Question> questions_temp_future_memo{};
             for (size_t g = start_index; g < end_index; ++g)
             {
                 questions_temp.push_back(questions[g]);
             }
             
             bool again = false;
+            bool back_at_last = false;
             Question q;
 
             bool clear_terminal = true;
-            while (questions_temp.size() > 0)
+            while (questions_temp.size() > 0 || questions_temp_future_memo.size() > 0 || back_at_last || again)
             {
                 if (clear_terminal) clear();
                 else clear_terminal = true;
-                size_t index;
+                size_t index = q.number;
                 std::uniform_int_distribution<size_t> dis{0, questions_temp.size() - 1};
                 size_t num = dis(rng);
                 if (!again)
@@ -897,7 +900,7 @@ int main ()
 
                 std::string opt{""};
 
-                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
+                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
 
                 bool menu = false;
                 do
@@ -913,6 +916,14 @@ int main ()
                             case 1: //Continuar
                                 flag = true;
                                 again = false;
+                                questions_temp_memo.push_back(q);
+                                if (questions_temp_future_memo.size() > 0)
+                                {
+                                    again = true;
+                                    q = *(questions_temp_future_memo.end() - 1);
+                                    questions_temp_future_memo.pop_back();
+                                }
+                                else back_at_last = false;   
                                 break;
                             case 2: //Ir al Menu
                                 menu = true;
@@ -935,7 +946,7 @@ int main ()
                                                 menu = false;
                                                 flag = false;
                                                 print_initial_menu();
-                                                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
+                                                std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
                                                 break;
                                             }
                                             else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
@@ -950,7 +961,7 @@ int main ()
                                     {
                                         flag = false;
                                         menu = false;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
+                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
                                         break;
                                     }
                                     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
@@ -958,10 +969,30 @@ int main ()
                                 break;
                             case 3: //Repetir
                                 flag = true;
+                                again = true;
                                 clear_terminal = ask_clear_terminal();
                                 std::cout << std::endl;
                                 break;
-                            case 4: //Reiniciar
+                            case 4: //Volver
+                                if (questions_temp.size() <= 0)
+                                {
+                                    back_at_last = true;
+                                }
+                                
+                                if (questions_temp_memo.size() <= 0)
+                                {
+                                    std::cout << "\n\tEstas ya en la pregunta inicial, no hay otra pregunta a la cual volver!" << std::endl << std::endl;
+                                    std::this_thread::sleep_for(2s);
+                                    std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
+                                    break;
+                                }
+                                flag = true;
+                                again = true;
+                                questions_temp_future_memo.push_back(q);
+                                q = *(questions_temp_memo.end() - 1);
+                                questions_temp_memo.pop_back();
+                                break;
+                            case 5: //Reiniciar
                                 flag = true;
                                 do
                                 {
@@ -971,19 +1002,29 @@ int main ()
                                     if (to_lower(s_ans) == "si" || to_lower(s_ans) == "s")
                                     {
                                         flag = true;
+                                        questions_temp = std::vector<Question>{};
+                                        questions_temp_memo = std::vector<Question>{};
+                                        questions_temp_future_memo = std::vector<Question>{};
+                                        for (size_t g = start_index; g < end_index; ++g)
+                                        {
+                                            questions_temp.push_back(questions[g]);
+                                        }
+                                        back_at_last = false;
                                         again = false;
+                                        q = Question{};
+                                        clear_terminal = true;
                                         break;
                                     }
                                     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
                                     {
                                         flag = false;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
+                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
                                         break;
                                     }
                                     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
                                 } while (true);
                                 break;
-                            case 5: //Redefinir Rango
+                            case 6: //Redefinir Rango
                                 do
                                 {
                                     std::string s_ans;
@@ -999,20 +1040,20 @@ int main ()
                                     else if (to_lower(s_ans) == "no" || to_lower(s_ans) == "n")
                                     {
                                         flag = false;
-                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Reiniciar" << std::endl << "5) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 5]: ";
+                                        std::cout << "Que desea hacer?: " << std::endl << "1) Continuar\t2) Ir al Menu" << std::endl << "3) Repetir\t4) Volver" << std::endl << "5) Reiniciar\t6) Redefinir Rango" << std::endl <<"Ingrese su opcion [1, 2, ..., 6]: ";
                                         break;
                                     }
                                     std::cout << "\nOpcion no valida, Ingresa nueva opcion: ";
                                 } while (true);
                                 break;
                             default:
-                                std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 5]: ";
+                                std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 6]: ";
                                 break;
                         }
                     }
                     else
                     {
-                        std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 5]: ";
+                        std::cout << "\nOpcion no valida, Ingresa nueva opcion [1, 2, ..., 6]: ";
                     }
 
                     if (flag)

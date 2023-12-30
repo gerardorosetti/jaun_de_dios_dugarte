@@ -16,6 +16,7 @@
 const std::regex regexp{"[a-zA-Z0-9áÁéÉíÍóÓúÚñÑĺ]"};
 const std::regex regexp_only_letters1{"[a-zA-ZáÁéÉíÍóÓúÚñÑĺÚ]"};
 const std::regex regexp_only_letters2{"[a-zA-Z]"};
+const std::regex regexp_only_letters_and_numbers{"[a-zA-Z0-9]"};
 // const std::regex regexp{"[a-zA-Z0-9áéíóúñÑĺ]"};
 using namespace std::literals::chrono_literals;
 
@@ -524,24 +525,52 @@ int main ()
                 size_t words_match_counter = 0;
                 std::string to_show = "";
 
-                auto check_sentences_match = [&words_match_counter, &to_show] (std::string s1, std::string s2)
+                auto check_sentences_match = [&words_match_counter, &to_show] (std::string s1, size_t num_lines, std::string s2)
                 {
                     //Lo mejor es que s1 sea el string de la respuesta ya correcta.
                     std::vector<std::string> v1{split(only_letters(to_lower(s1)))};
                     std::vector<std::string> v2{split(only_letters(to_lower(s2)))};
-                    bool result = true;
-                    for (std::string s1_temp : v1)
+                    std::vector<std::string> v2_org{split(s2)};
+                    std::vector<std::string> char_index_found{};
+                    for (size_t g = 0; g < v1.size(); ++g)
                     {
-                        if (std::any_of(v2.begin(), v2.end(), [&s1_temp] (std::string s2_temp) { return s1_temp == s2_temp; }))
+                        std::vector<std::string>::iterator it_save1, it_save2;
+                        bool found = false;
+                        for (auto it = v2.begin(), it2 = v2_org.begin(); it != v2.end(); it = std::next(it), it2 = std::next(it2))
                         {
-                            ++words_match_counter;
-                            to_show += s1_temp;
-                            to_show += ' ';
-                            continue;
+                            if (v1[g] == (*it))
+                            {
+                                ++words_match_counter;
+                                if (std::regex_match((*it2),regexp_only_letters_and_numbers) && (*it2).length() == 1 && num_lines > 1 && std::none_of(char_index_found.begin(), char_index_found.end(), [&it] (std::string c) { return c == (*it); }))
+                                {
+                                    char_index_found.push_back((*it));
+                                    to_show += (*it2);
+                                    to_show += ") ";
+                                    it_save1 = it;
+                                    it_save2 = it2;
+                                    found = true;
+                                    break;
+                                }
+                                
+                                to_show += (*it2);
+                                to_show += ' ';
+                                it_save1 = it;
+                                it_save2 = it2;
+                                found = true;
+                                break;
+                            }
                         }
-                        for (size_t i = 0; i < s1_temp.length(); ++i)
+                        if (!found)
                         {
-                            to_show += "_ ";
+                            for (size_t i = 0; i < v1[g].length(); ++i)
+                            {
+                                to_show += "_ ";
+                            }
+                        }
+                        else 
+                        {
+                            v2.erase(it_save1);
+                            v2_org.erase(it_save2);
                         }
                     }
                     to_show.pop_back();
@@ -557,7 +586,7 @@ int main ()
 
                 big_ans.pop_back();
 
-                if (!check_sentences_match(big_ans, ans))
+                if (!check_sentences_match(big_ans, q.answer_original.size(), ans))
                 {
                     std::cout << "\nIncorrecto... ";
                 }
